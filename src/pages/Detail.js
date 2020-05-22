@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import { Title } from '../components/Title';
 import API_KEY from '../config/api';
 
+import { connect } from 'react-redux';
+
+import Counter from '../components/Contador';
+
 class Detail extends Component {
   state = {movie: {}};
 
@@ -16,7 +20,6 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    console.log('is mounting the component', this.props.movieId);
     const {movieId} = this.props;
     this._getMovieDetailsById( {id: movieId});
   }
@@ -27,14 +30,15 @@ class Detail extends Component {
     const  {Title:MovieTitle, Poster, Metascore, Plot, Year, Actors}= this.state.movie;
   return(
     <div>
-      
+      <Counter></Counter>
       <Title content={MovieTitle} type="is-3"/>
       <img src={Poster} alt={Title} />
       <Title content={Actors} type="is-4" />
-      <span>{Metascore} {this.props.movieId}</span>
+      <span>{Metascore} {this.props.movieId} <strong>{this.props.contador}</strong></span>
       <p>{Plot}</p>
     </div>)
   }
 }
+
 
 export default Detail;

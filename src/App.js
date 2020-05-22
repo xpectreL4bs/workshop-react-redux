@@ -8,17 +8,25 @@ import './App.css';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 
+import Counter from './components/Contador';
+
 //import components
 import {Title} from './components/Title';
 
 import 'bulma/css/bulma.css';
+
+
+/* Termina la función de redux */
 
 class App extends Component {
 
   render () {
 
     return (
+    
       <div className="App">
+        
+        <Counter />
 
         <Link to="/">
           <Title content="Buscar Películas" type="is-1" modifier="title"/>
